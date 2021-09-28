@@ -8,11 +8,11 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
     tensorboard jieba pandas statsmodels lightgbm arrow einops fvcore  
 RUN pip install pyyaml 
-RUN pip opts 
 RUN pip seaborn 
 RUN pip onnx 
 RUN pip tensorrt
 RUN pip pycuda
+RUN pip install accimage
 RUN wget https://github.com/zyedidia/micro/releases/download/v2.0.10/micro-2.0.10-amd64.deb && dpkg -i micro-2.0.10-amd64.deb && rm micro-2.0.10-amd64.deb
 WORKDIR /me
 ENTRYPOINT [ "/bin/zsh" ]
