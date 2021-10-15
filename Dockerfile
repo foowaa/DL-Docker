@@ -1,34 +1,34 @@
 FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-devel
 RUN apt update && apt install -y software-properties-common && add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
-RUN apt update  && apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
+RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
     libxrender-dev libxext6 checkinstall pkg-config yasm gfortran 
-RUN apt install libjpeg8-dev 
-RUN apt install libjasper-dev
-RUN apt install libpng12-dev
-RUN apt install libtiff5-dev
-RUN apt install libtiff-dev
-RUN apt install libavcodec-dev 
-RUN apt install libavformat-dev  
-RUN apt install libswscale-dev
-RUN apt install libdc1394-22-dev
-RUN apt install libxine2-dev
-RUN apt install libv4l-dev
-RUN apt install libgstreamer0.10-dev
-RUN apt install libgstreamer-plugins-base0.10-dev
-RUN apt install libgtk2.0-dev 
-RUN apt install libtbb-dev 
-RUN apt install libatlas-base-dev
-RUN apt install libfaac-dev
-RUN apt install libmp3lame-dev
-RUN apt install libtheora-dev
-RUN apt install libvorbis-dev
-RUN apt install libxvidcore-dev
-RUN apt install libopencore-amrnb-dev
-RUN apt install libopencore-amrwb-dev
-RUN apt install libavresample-dev
-RUN apt install x264
-RUN apt install v4l-utils
-RUN apt install libboost-all-dev
+RUN apt install libjpeg8-dev -y
+RUN apt install libjasper-dev -y
+RUN apt install libpng12-dev -y
+RUN apt install libtiff5-dev -y
+RUN apt install libtiff-dev -y
+RUN apt install libavcodec-dev  -y
+RUN apt install libavformat-dev   -y
+RUN apt install libswscale-dev -y
+RUN apt install libdc1394-22-dev -y
+RUN apt install libxine2-dev -y
+RUN apt install libv4l-dev -y
+RUN apt install libgstreamer0.10-dev -y
+RUN apt install libgstreamer-plugins-base0.10-dev -y
+RUN apt install libgtk2.0-dev  -y
+RUN apt install libtbb-dev  -y
+RUN apt install libatlas-base-dev -y
+RUN apt install libfaac-dev -y
+RUN apt install libmp3lame-dev -y
+RUN apt install libtheora-dev -y
+RUN apt install libvorbis-dev -y
+RUN apt install libxvidcore-dev -y
+RUN apt install libopencore-amrnb-dev -y
+RUN apt install libopencore-amrwb-dev -y
+RUN apt install libavresample-dev -y
+RUN apt install x264 -y
+RUN apt install v4l-utils -y
+RUN apt install libboost-all-dev -y
     # Clean up
     # && apt-get autoremove -y \
     # && apt-get clean -y \
