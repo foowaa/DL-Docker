@@ -45,7 +45,7 @@ WORKDIR /me
 RUN git clone https://github.com/opencv/opencv.git && cd opencv && git checkout master && cd /me 
 RUN git clone https://github.com/opencv/opencv_contrib.git && cd opencv_contrib && git checkout master && cd /me 
 RUN cd opencv && mkdir build && cd build 
-RUN cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/me/opencv_contrib/modules  .. 
+RUN cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local  .. 
 RUN make -j 4
 RUN make install
 RUN git clone https://github.com/open-mmlab/denseflow.git && cd denseflow && git checkout master && mkdir build && cd build \
