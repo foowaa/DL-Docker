@@ -13,8 +13,8 @@ RUN apt install libswscale-dev -y
 RUN apt install libdc1394-22-dev -y
 RUN apt install libxine2-dev -y
 RUN apt install libv4l-dev -y
-RUN apt install libgstreamer0.10-dev -y
-RUN apt install libgstreamer-plugins-base0.10-dev -y
+RUN apt install libgstreamer1.0-dev -y
+RUN apt install libgstreamer-plugins-base1.0-dev -y
 RUN apt install libgtk2.0-dev  -y
 RUN apt install libtbb-dev  -y
 RUN apt install libatlas-base-dev -y
