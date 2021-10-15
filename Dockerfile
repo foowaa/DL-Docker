@@ -50,7 +50,9 @@ RUN cd /usr/include/linux && ln -s -f ../libv4l1-videodev.h videodev.h
 # RUN make install
 # RUN git clone https://github.com/open-mmlab/denseflow.git && cd denseflow && git checkout master && mkdir build && cd build \
 #     && cmake -DCMAKE_INSTALL_PREFIX=/usr/local/denseflow -DUSE_HDF5=no -DUSE_NVFLOW=no .. && make -j 4 && make install
-COPY install_denseflow.sh ~
+WORKDIR ~
+COPY install_denseflow.sh .
+
 RUN chmod +x install_denseflow.sh
 CMD ["install_denseflow.sh"]
 
