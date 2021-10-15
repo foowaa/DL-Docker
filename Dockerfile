@@ -3,7 +3,7 @@ RUN apt remove x264 libx264-dev
 RUN apt update && apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
     libxrender-dev libxext6 checkinstall pkg-config yasm gfortran libjpeg8-dev libjasper-dev libpng12-dev libtiff5-dev libtiff-dev libavcodec-dev libavformat-dev \ 
     libswscale-dev libdc1394-22-dev libxine2-dev libv4l-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libgtk2.0-dev libtbb-dev libatlas-base-dev \
-    libfaac-dev libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev x264 v4l-utils libboost-all-dev
+    libfaac-dev libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev x264 v4l-utils libboost-all-dev \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
@@ -26,7 +26,8 @@ RUN git clone https://github.com/opencv/opencv.git && cd opencv && git checkout 
 RUN git clone clone https://github.com/opencv/opencv_contrib.git && cd opencv_contrib && git checkout master && cd .. 
 RUN cd opencv && mkdir build && cd build && cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local/OpenCV -D INSTALL_C_EXAMPLES=ON \
     -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_OPENGL=ON  -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -D BUILD_EXAMPLES=ON .. && make j4 && make install
-
+RUN git clone https://github.com/open-mmlab/denseflow.git && cd denseflow && git checkout master && mkdir build && cd build \
+    && cmake -DCMAKE_INSTALL_PREFIX=/usr/local/denseflow -DUSE_HDF5=no -DUSE_NVFLOW=no .. && make -j 4 && make install
 
 # Install MMAction2
 RUN git clone https://github.com/open-mmlab/mmaction2.git /mmaction2
