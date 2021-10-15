@@ -7,8 +7,10 @@ echo -n 'OpenCV_DIR=$ZZROOT' >> ~/.zshrc
 echo -n 'BOOST_ROOT=$ZZROOT' >> ~/.zshrc
 source ~/.zshrc
 
-# fetch install scripts
-git clone https://github.com/innerlee/setup.git
+# fetch install 
+git clone https://github/innerlee/setup.git
+chmod -R +x setup
+
 cd setup
 
 # opencv depends on ffmpeg for video decoding
