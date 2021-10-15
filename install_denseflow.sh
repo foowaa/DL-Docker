@@ -3,6 +3,8 @@
 echo -n 'export ZZROOT=$HOME/app' >> ~/.zshrc 
 echo -n 'PATH=$ZZROOT/bin:$PATH' >> ~/.zshrc 
 echo -n 'LD_LIBRARY_PATH=$ZZROOT/lib:$ZZROOT/lib64:$LD_LIBRARY_PATH' >> ~/.zshrc
+echo -n 'OpenCV_DIR=$ZZROOT' >> ~/.zshrc
+echo -n 'BOOST_ROOT=$ZZROOT' >> ~/.zshrc
 source ~/.zshrc
 
 # fetch install scripts
@@ -21,13 +23,12 @@ cd setup
 
 # install opencv 4.3.0
 ./zzopencv.sh
-# you may put this line into your .bashrc
-export OpenCV_DIR=$ZZROOT
+
 
 # install boost
 ./zzboost.sh
-# you may put this line into your .bashrc
-export BOOST_ROOT=$ZZROOT
+
+
 
 # finally, install denseflow
 ./zzdenseflow.sh
