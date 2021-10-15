@@ -1,12 +1,37 @@
 FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-devel
 RUN apt update && apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
-    libxrender-dev libxext6 checkinstall pkg-config yasm gfortran libjpeg8-dev libjasper-dev libpng12-dev libtiff5-dev libtiff-dev libavcodec-dev libavformat-dev \ 
-    libswscale-dev libdc1394-22-dev libxine2-dev libv4l-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libgtk2.0-dev libtbb-dev libatlas-base-dev \
-    libfaac-dev libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev x264 v4l-utils libboost-all-dev \
+    libxrender-dev libxext6 checkinstall pkg-config yasm gfortran 
+RUN apt install libjpeg8-dev 
+RUN apt install libjasper-dev
+RUN apt install libpng12-dev
+RUN apt install libtiff5-dev
+RUN apt install libtiff-dev
+RUN apt install libavcodec-dev 
+RUN apt install libavformat-dev  
+RUN apt install libswscale-dev
+RUN apt install libdc1394-22-dev
+RUN apt install libxine2-dev
+RUN apt install libv4l-dev
+RUN apt install libgstreamer0.10-dev
+RUN apt install libgstreamer-plugins-base0.10-dev
+RUN apt install libgtk2.0-dev 
+RUN apt install libtbb-dev 
+RUN apt install libatlas-base-dev
+RUN apt install libfaac-dev
+RUN apt install libmp3lame-dev
+RUN apt install libtheora-dev
+RUN apt install libvorbis-dev
+RUN apt install libxvidcore-dev
+RUN apt install libopencore-amrnb-dev
+RUN apt install libopencore-amrwb-dev
+RUN apt install libavresample-dev
+RUN apt install x264
+RUN apt install v4l-utils
+RUN apt install libboost-all-dev
     # Clean up
-    && apt-get autoremove -y \
-    && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/* 
+    # && apt-get autoremove -y \
+    # && apt-get clean -y \
+    # && rm -rf /var/lib/apt/lists/* 
 RUN cd /usr/include/linux && ln -s -f ../libv4l1-videodev.h videodev.h
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
