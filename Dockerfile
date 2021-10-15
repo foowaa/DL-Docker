@@ -1,5 +1,4 @@
 FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-devel
-RUN apt remove x264 libx264-dev
 RUN apt update && apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
     libxrender-dev libxext6 checkinstall pkg-config yasm gfortran libjpeg8-dev libjasper-dev libpng12-dev libtiff5-dev libtiff-dev libavcodec-dev libavformat-dev \ 
     libswscale-dev libdc1394-22-dev libxine2-dev libv4l-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libgtk2.0-dev libtbb-dev libatlas-base-dev \
