@@ -1,5 +1,5 @@
 FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-devel
-RUN apt update && apt install software-properties-common && add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+RUN apt update && apt install -y software-properties-common && add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
 RUN apt update  && apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
     libxrender-dev libxext6 checkinstall pkg-config yasm gfortran 
 RUN apt install libjpeg8-dev 
