@@ -43,7 +43,7 @@ RUN cd /usr/include/linux && ln -s -f ../libv4l1-videodev.h videodev.h
 #install denseflow
 WORKDIR /me
 RUN git clone https://github.com/opencv/opencv.git && cd opencv && git checkout master && cd /me 
-RUN git clone https://github.com/opencv/opencv_contrib.git && cd opencv_contrib && git checkout master && cd me 
+RUN git clone https://github.com/opencv/opencv_contrib.git && cd opencv_contrib && git checkout master && cd /me 
 RUN cd opencv && mkdir build && cd build 
 RUN cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/me/opencv_contrib/modules  .. 
 RUN make -j 4
