@@ -46,7 +46,7 @@ RUN git clone https://github.com/opencv/opencv.git && cd opencv && git checkout 
 RUN git clone https://github.com/opencv/opencv_contrib.git && cd opencv_contrib && git checkout master && cd .. 
 RUN cd opencv && mkdir build && cd build 
 RUN cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local/OpenCV -D INSTALL_C_EXAMPLES=ON \
-    -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_OPENGL=ON  -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -D BUILD_EXAMPLES=ON .. \
+    -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_OPENGL=ON  -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -D BUILD_EXAMPLES=ON .. 
 RUN make j4
 RUN make install
 RUN git clone https://github.com/open-mmlab/denseflow.git && cd denseflow && git checkout master && mkdir build && cd build \
