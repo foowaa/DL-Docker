@@ -8,7 +8,7 @@ echo -n 'BOOST_ROOT=$ZZROOT' >> ~/.zshrc
 source ~/.zshrc
 
 # fetch install 
-git clone https://github/innerlee/setup.git
+git clone https://github.com/innerlee/setup.git
 chmod -R +x setup
 
 cd setup
