@@ -33,4 +33,19 @@ cd setup
 
 
 # finally, install denseflow
-./zzdenseflow.sh
+set -e
+
+ROOTDIR=${ZZROOT:-$HOME/app}
+echo Dependency: boost, opencv
+
+mkdir -p  "$ROOTDIR"/src
+cd "$ROOTDIR"/src
+git clone https://github.com/open-mmlab/denseflow 
+
+cd denseflow
+mkdir -p build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX="$ROOTDIR" ..
+make -j"$(nproc)" && make install
+
+echo $NAME installed on "$ROOTDIR"
