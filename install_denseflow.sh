@@ -1,6 +1,6 @@
 # ZZROOT is the root dir of all the installation
 # you may put these lines into your .bashrc/.zshrc/etc.
-echo -n 'export ZZROOT=$HOME/app' >> ~/.zshrc 
+echo -n 'ZZROOT=$HOME/app' >> ~/.zshrc 
 echo -n 'PATH=$ZZROOT/bin:$PATH' >> ~/.zshrc 
 echo -n 'LD_LIBRARY_PATH=$ZZROOT/lib:$ZZROOT/lib64:$LD_LIBRARY_PATH' >> ~/.zshrc
 echo -n 'OpenCV_DIR=$ZZROOT' >> ~/.zshrc
