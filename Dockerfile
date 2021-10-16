@@ -14,10 +14,10 @@ RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image sci
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 #install denseflow
-WORKDIR ~
-COPY install_denseflow.sh .
-RUN chmod +x install_denseflow.sh
-RUN ./install_denseflow.sh
+# WORKDIR ~
+# COPY install_denseflow.sh .
+# RUN chmod +x install_denseflow.sh
+# RUN ./install_denseflow.sh
 
 WORKDIR /me
 RUN wget https://github.com/zyedidia/micro/releases/download/v2.0.10/micro-2.0.10-amd64.deb && dpkg -i micro-2.0.10-amd64.deb && rm micro-2.0.10-amd64.deb \
