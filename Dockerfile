@@ -24,8 +24,8 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 
 #install decord for GPU
 WORKDIR /me
-RUN git clone --recursive https://github.com/dmlc/decord && cd decord && mkdir build && cd build && \
-    cmake .. -DUSE_CUDA=ON -DCMAKE_BUILD_TYPE=Release && make
+RUN git clone --recursive https://github.com/dmlc/decord && cd decord && mkdir build && cd build 
+RUN cmake .. -DUSE_CUDA=ON -DCMAKE_BUILD_TYPE=Release && make
 RUN cd ../python && python setup.py install --user
 
 
