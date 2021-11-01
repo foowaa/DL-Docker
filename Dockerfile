@@ -9,7 +9,7 @@ RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image sci
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pycuda pydub moviepy natsort pudb pytz sympy \
     PySnooper loguru merry tenacity environs pypinyin attrs cattrs lmdb torchaudio torchtext sh dill h5py networkx[default] librosa cupy-cuda102 \
     pytorchvideo msgpack pyarrow thefuzz torchmetrics onnxruntime onnxruntime-gpu kornia Augmentor tormentor lightning-flash lightning-transformers lightning-bolts \
-    download av paddlepaddle-gpu paddlevideo torchnet tabulate torchdata 
+    download decord av paddlepaddle-gpu paddlevideo torchnet tabulate torchdata 
 
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
@@ -23,10 +23,11 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 
 
 #install decord for GPU
-WORKDIR /me
-RUN git clone --recursive https://github.com/dmlc/decord && cd decord && mkdir build && cd build 
-RUN cmake .. -DUSE_CUDA=ON -DCMAKE_BUILD_TYPE=Release && make
-RUN cd ../python && python setup.py install --user
+# WORKDIR /me
+# RUN git clone --recursive https://github.com/dmlc/decord && cd decord && mkdir build && cd build 
+# RUN cmake .. -DUSE_CUDA=ON -DCMAKE_BUILD_TYPE=Release
+# RUN make
+# RUN cd ../python && python setup.py install --user
 
 
 WORKDIR /me
