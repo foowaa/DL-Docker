@@ -11,7 +11,6 @@ RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image sci
     pytorchvideo msgpack pyarrow thefuzz onnxruntime onnxruntime-gpu kornia Augmentor tormentor lightning-flash lightning-transformers lightning-bolts \
     download decord av paddlepaddle-gpu paddlevideo torchnet tabulate torchdata torchaudio torchtext torchmetrics
 
-
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 
@@ -35,6 +34,7 @@ RUN wget https://github.com/zyedidia/micro/releases/download/v2.0.10/micro-2.0.1
     && wget https://github.com/sharkdp/fd/releases/download/v8.2.1/fd_8.2.1_amd64.deb && dpkg -i fd_8.2.1_amd64.deb && rm fd_8.2.1_amd64.deb \
     && git clone https://github.com/sharkdp/dbg-macro && ln -s $(readlink -f dbg-macro/dbg.h) /usr/include/dbg.h
 
+RUN pip uninstall torchtext && pip install torchtext
 
 WORKDIR /me
 ENTRYPOINT [ "/bin/zsh" ]
