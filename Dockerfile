@@ -14,7 +14,12 @@ RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image sci
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 WORKDIR /me
-RUN wget http://tamacom.com/global/global-6.6.2.tar.gz && tar xzvf global-6.6.2.tar.gz && cd global-6.6.2 && ./configure && make && make install
+RUN wget http://tamacom.com/global/global-6.6.2.tar.gz 
+RUN tar xzvf global-6.6.2.tar.gz 
+RUN cd global-6.6.2 
+RUN ./configure 
+RUN make 
+RUN make install
 
 #install denseflow
 # WORKDIR ~
