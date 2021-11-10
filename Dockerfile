@@ -17,7 +17,7 @@ WORKDIR /me
 RUN wget http://tamacom.com/global/global-6.6.2.tar.gz 
 RUN tar xzvf global-6.6.2.tar.gz 
 RUN cd global-6.6.2 
-RUN ./configure 
+RUN ./configure --disable-gtagscscope
 RUN make 
 RUN make install
 
