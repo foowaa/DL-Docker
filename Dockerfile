@@ -16,10 +16,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 WORKDIR /me
 RUN wget http://tamacom.com/global/global-6.6.2.tar.gz 
 RUN tar xzvf global-6.6.2.tar.gz 
-RUN cd global-6.6.2 
-RUN ./configure --disable-gtagscscope
-RUN make 
-RUN make install
+RUN cd global-6.6.2 && ./configure --disable-gtagscscope && make && make install
 
 #install denseflow
 # WORKDIR ~
