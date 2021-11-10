@@ -15,7 +15,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 
 # install global
 WORKDIR /me
-RUN wget http://tamacom.com/global/global-6.6.2.tar.gz && RUN tar xzvf global-6.6.2.tar.gz 
+RUN wget http://tamacom.com/global/global-6.6.2.tar.gz && tar xzvf global-6.6.2.tar.gz 
 RUN cd global-6.6.2 && ./configure --disable-gtagscscope && make && make install
 RUN cd /me && rm -f global-6.6.2.tar.gz && rm -rf global-6.6.2
 
