@@ -4,8 +4,6 @@ RUN apt-key del 7fa2af80 \
     && rm /etc/apt/sources.list.d/cuda.list \
     && rm /etc/apt/sources.list.d/nvidia-ml.list
 COPY cuda-keyring_1.0-1_all.deb .
-# RUN echo ls -l
-# RUN echo where dpkg
 RUN dpkg -i cuda-keyring_1.0-1_all.deb
 
 # RUN curl -L -O https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
@@ -24,7 +22,8 @@ RUN pip install tensorflow matplotlib sklearn opencv-python imageio Pillow sciki
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pycuda pydub moviepy natsort pudb pytz sympy \
     PySnooper loguru merry tenacity environs pypinyin attrs cattrs lmdb sh dill h5py networkx[default] librosa cupy-cuda102 \
     pytorchvideo msgpack pyarrow thefuzz onnxruntime onnxruntime-gpu kornia Augmentor tormentor lightning-flash lightning-transformers lightning-bolts \
-    download decord av paddlepaddle-gpu paddlevideo torchnet tabulate torchdata torchaudio torchtext torchmetrics darts deep-forest
+    download decord av paddlepaddle-gpu paddlevideo torchnet tabulate torchdata torchaudio torchtext torchmetrics darts deep-forest opencv-contrib-python \
+    pycocotools cityscapesscripts ujson coremltools
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
