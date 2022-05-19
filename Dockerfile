@@ -2,7 +2,10 @@ FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-devel
 # FROM pytorch/pytorch:1.11.0-cuda11.3-cudnn8-devel
 # RUN echo "deb http://developer.download.nvidia.cn/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list \
 #     echo "deb http://developer.download.nvidia.cn/compute/machine-learning/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list
-COPY cuda-keyring_1.0-1_all.deb . && dpkg -i cuda-keyring_1.0-1_all.deb
+# COPY cuda-keyring_1.0-1_all.deb . && dpkg -i cuda-keyring_1.0-1_all.deb
+RUN apt-key del 7fa2af80 \
+    && curl -L -O https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb \
+    && dpkg -i cuda-keyring_1.0-1_all.deb 
 # RUN wget RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb \
 #     && dpkg -i cuda-keyring_1.0-1_all.deb
 
