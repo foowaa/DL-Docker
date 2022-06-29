@@ -6,13 +6,6 @@ RUN apt-key del 7fa2af80 \
 COPY cuda-keyring_1.0-1_all.deb .
 RUN dpkg -i cuda-keyring_1.0-1_all.deb
 
-WORKDIR /me
-RUN wget https://github.com/jonas/tig/releases/download/tig-2.5.4/tig-2.5.4.tar.gz
-RUN tar xzvf tig-2.5.4.tar.gz
-RUN cd tig-2.5.4 && make
-RUN cd tig-2.5.4 && make install
-RUN rm -rf tig-2.5.4
-#RUN echo 'alias glog="tig"' >> ~/.zshrc && echo 'alias gstatus="tig status"' >> ~/.zshrc && source ~/.zshsrc
 
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
@@ -34,11 +27,6 @@ RUN mkdir exa && cd exa && wget https://github.com/ogham/exa/releases/download/v
     && unzip exa-linux-x86_64-musl-v0.10.1.zip && cp bin/exa /usr/sbin/exa && chmod +x /usr/sbin/exa \
     && echo 'alias lla="exa -la"' >> ~/.zshrc
 RUN rm -rf /me/exa
-# install tig
-RUN wget https://github.com/jonas/tig/releases/download/tig-2.5.4/tig-2.5.4.tar.gz && tar xzvf tig-2.5.4.tar.gz \
-    && cd tig-2.5.4 && ./configure && make && make install && rm -rf tig-2.5.4 \
-    && echo 'alias glog="tig"' >> ~/.zshrc && echo 'alias gstatus="tig status"' >> ~/.zshrc && source ~/.zshsrc
-
 
 #install denseflow
 # WORKDIR ~
