@@ -6,13 +6,6 @@ RUN apt-key del 7fa2af80 \
 COPY cuda-keyring_1.0-1_all.deb .
 RUN dpkg -i cuda-keyring_1.0-1_all.deb
 
-WORKDIR /me
-RUN wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip
-RUN unzip exa-linux-x86_64-musl-v0.10.1.zip
-RUN echo ls
-RUN cp exa-linux-x86_64-musl-v0.10.1/bin/exa /usr/sbin/exa 
-RUN rm -rf exa-linux-x86_64-musl-v0.10.1
-
 
 RUN apt update
 RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
@@ -21,6 +14,13 @@ RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag gi
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* 
+
+WORKDIR /me
+RUN wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip
+RUN unzip exa-linux-x86_64-musl-v0.10.1.zip
+RUN echo ls
+RUN cp exa-linux-x86_64-musl-v0.10.1/bin/exa /usr/sbin/exa 
+RUN rm -rf exa-linux-x86_64-musl-v0.10.1
 
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
