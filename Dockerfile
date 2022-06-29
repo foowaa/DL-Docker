@@ -6,11 +6,6 @@ RUN apt-key del 7fa2af80 \
 COPY cuda-keyring_1.0-1_all.deb .
 RUN dpkg -i cuda-keyring_1.0-1_all.deb
 
-# RUN curl -L -O https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb
-# RUN dpkg -i cuda-keyring_1.0-1_all.deb 
-# RUN wget RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-keyring_1.0-1_all.deb \
-#     && dpkg -i cuda-keyring_1.0-1_all.deb
-
 RUN apt update
 RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
     libxrender-dev libxext6 checkinstall pkg-config yasm gfortran libavcodec-dev libavfilter-dev libavformat-dev libavutil-dev rsync \
@@ -18,11 +13,6 @@ RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag gi
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* 
-WORKDIR /me
-RUN wget https://github.com/zyedidia/micro/releases/download/v2.0.10/micro-2.0.10-amd64.deb 
-RUN dpkg -i micro-2.0.10-amd64.deb && rm micro-2.0.10-amd64.deb
-RUN wget https://github.com/sharkdp/fd/releases/download/v8.2.1/fd_8.2.1_amd64.deb
-RUN dpkg -i fd_8.2.1_amd64.deb && rm fd_8.2.1_amd64.deb
 
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
@@ -31,10 +21,12 @@ RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image sci
     download decord av torchnet tabulate torchdata torchaudio torchtext torchmetrics darts opencv-contrib-python \
     pycocotools ujson coremltools
 # RUN pip install deep-forest cupy-cuda102 paddlepaddle-gpu paddlevideo cityscapesscripts pycuda 
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+RUN pip install nbnb
+
 
 # install global
 WORKDIR /me
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 RUN wget http://tamacom.com/global/global-6.6.2.tar.gz && tar xzvf global-6.6.2.tar.gz 
 RUN cd global-6.6.2 && ./configure --disable-gtagscscope && make && make install
 RUN cd /me && rm -f global-6.6.2.tar.gz && rm -rf global-6.6.2
@@ -45,7 +37,6 @@ RUN cd /me && rm -f global-6.6.2.tar.gz && rm -rf global-6.6.2
 # RUN chmod +x install_denseflow.sh
 # RUN ./install_denseflow.sh
 
-
 #install decord for GPU
 # WORKDIR /me
 # RUN git clone --recursive https://github.com/dmlc/decord && cd decord && mkdir build && cd build 
@@ -54,12 +45,12 @@ RUN cd /me && rm -f global-6.6.2.tar.gz && rm -rf global-6.6.2
 # RUN cd ../python && python setup.py install --user
 
 
-# WORKDIR /me
-# RUN wget https://github.com/zyedidia/micro/releases/download/v2.0.10/micro-2.0.10-amd64.deb && dpkg -i micro-2.0.10-amd64.deb && rm micro-2.0.10-amd64.deb \
-#     && wget https://github.com/sharkdp/fd/releases/download/v8.2.1/fd_8.2.1_amd64.deb && dpkg -i fd_8.2.1_amd64.deb && rm fd_8.2.1_amd64.deb \
-# #     && git clone https://github.com/sharkdp/dbg-macro && ln -s $(readlink -f dbg-macro/dbg.h) /usr/include/dbg.h
+WORKDIR /me
+RUN wget https://github.com/zyedidia/micro/releases/download/v2.0.10/micro-2.0.10-amd64.deb && dpkg -i micro-2.0.10-amd64.deb && rm micro-2.0.10-amd64.deb \
+    && wget https://github.com/sharkdp/fd/releases/download/v8.2.1/fd_8.2.1_amd64.deb && dpkg -i fd_8.2.1_amd64.deb && rm fd_8.2.1_amd64.deb \
+    && git clone https://github.com/sharkdp/dbg-macro && ln -s $(readlink -f dbg-macro/dbg.h) /usr/include/dbg.h
 
-RUN pip uninstall torchtext -y && pip install torchtext
+# RUN pip uninstall torchtext -y && pip install torchtext
 
 WORKDIR /me
 ENTRYPOINT [ "/bin/zsh" ]
