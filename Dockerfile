@@ -13,14 +13,23 @@ RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag gi
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/* 
+    && rm -rf /var/lib/apt/lists/*
+    
+RUN wget https://github.com/jonas/tig/releases/download/tig-2.5.4/tig-2.5.4.tar.gz
+RUN tar xzvf tig-2.5.4.tar.gz
+RUN cd tig-2.5.4
+RUN ./configure
+RUN make
+RUN make install
+RUN rm -rf tig-2.5.4
+RUN echo 'alias glog="tig"' >> ~/.zshrc && echo 'alias gstatus="tig status"' >> ~/.zshrc && source ~/.zshsrc
 
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
     PySnooper loguru merry tenacity environs pypinyin attrs cattrs lmdb sh dill h5py networkx[default] librosa \
     pytorchvideo msgpack pyarrow thefuzz onnxruntime onnxruntime-gpu kornia Augmentor tormentor lightning-flash lightning-transformers lightning-bolts \
     download decord av torchnet tabulate torchdata torchaudio torchtext torchmetrics darts opencv-contrib-python \
-    pycocotools ujson coremltools
+    pycocotools ujson tensorwatch
 # RUN pip install deep-forest cupy-cuda102 paddlepaddle-gpu paddlevideo cityscapesscripts pycuda 
 RUN pip install nbnb
 
