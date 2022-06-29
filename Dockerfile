@@ -16,10 +16,9 @@ RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag gi
     && rm -rf /var/lib/apt/lists/* 
 
 WORKDIR /me
-RUN mkdir exa && cd exa && wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip
-RUN unzip exa-linux-x86_64-musl-v0.10.1.zip
-RUN cp bin/exa /usr/sbin/exa 
-RUN cd ../ && rm -rf exa
+RUN mkdir exa && cd exa && wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip \
+    && unzip exa-linux-x86_64-musl-v0.10.1.zip && cp bin/exa /usr/sbin/exa && chmod +x /usr/sbin/exa
+RUN rm -rf /me/exa
 
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
