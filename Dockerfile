@@ -14,7 +14,8 @@ RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag gi
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
-    
+
+WORKDIR /me
 RUN wget https://github.com/jonas/tig/releases/download/tig-2.5.4/tig-2.5.4.tar.gz
 RUN tar xzvf tig-2.5.4.tar.gz
 RUN cd tig-2.5.4 && make
