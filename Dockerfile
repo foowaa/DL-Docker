@@ -23,13 +23,16 @@ RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image sci
 # RUN pip install deep-forest cupy-cuda102 paddlepaddle-gpu paddlevideo cityscapesscripts pycuda 
 RUN pip install nbnb
 
-
-# install global
 WORKDIR /me
+# install oh-my-zsh
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+# install global
 RUN wget http://tamacom.com/global/global-6.6.2.tar.gz && tar xzvf global-6.6.2.tar.gz 
 RUN cd global-6.6.2 && ./configure --disable-gtagscscope && make && make install
 RUN cd /me && rm -f global-6.6.2.tar.gz && rm -rf global-6.6.2
+# install exa
+RUN wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip
+RUN unzip exa-linux-x86_64-musl-v0.10.1.zip && cp exa-linux-x86_64-musl-v0.10.1/bin/exa /usr/sbin/exa && rm -rf exa-linux-x86_64-musl-v0.10.1
 
 #install denseflow
 # WORKDIR ~
