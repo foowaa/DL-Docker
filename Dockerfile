@@ -15,11 +15,6 @@ RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag gi
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* 
 
-WORKDIR /me
-RUN mkdir exa && cd exa && wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip \
-    && unzip exa-linux-x86_64-musl-v0.10.1.zip && cp bin/exa /usr/sbin/exa && chmod +x /usr/sbin/exa
-RUN rm -rf /me/exa
-
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
     PySnooper loguru merry tenacity environs pypinyin attrs cattrs lmdb sh dill h5py networkx[default] librosa \
@@ -37,8 +32,9 @@ RUN wget http://tamacom.com/global/global-6.6.2.tar.gz && tar xzvf global-6.6.2.
 RUN cd global-6.6.2 && ./configure --disable-gtagscscope && make && make install
 RUN cd /me && rm -f global-6.6.2.tar.gz && rm -rf global-6.6.2
 # install exa
-RUN wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip
-RUN unzip exa-linux-x86_64-musl-v0.10.1.zip && cp exa-linux-x86_64-musl-v0.10.1/bin/exa /usr/sbin/exa && rm -rf exa-linux-x86_64-musl-v0.10.1
+RUN mkdir exa && cd exa && wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip \
+    && unzip exa-linux-x86_64-musl-v0.10.1.zip && cp bin/exa /usr/sbin/exa && chmod +x /usr/sbin/exa
+RUN rm -rf /me/exa
 
 #install denseflow
 # WORKDIR ~
@@ -54,7 +50,6 @@ RUN unzip exa-linux-x86_64-musl-v0.10.1.zip && cp exa-linux-x86_64-musl-v0.10.1/
 # RUN cd ../python && python setup.py install --user
 
 
-WORKDIR /me
 RUN wget https://github.com/zyedidia/micro/releases/download/v2.0.10/micro-2.0.10-amd64.deb && dpkg -i micro-2.0.10-amd64.deb && rm micro-2.0.10-amd64.deb \
     && wget https://github.com/sharkdp/fd/releases/download/v8.2.1/fd_8.2.1_amd64.deb && dpkg -i fd_8.2.1_amd64.deb && rm fd_8.2.1_amd64.deb \
     && git clone https://github.com/sharkdp/dbg-macro && ln -s $(readlink -f dbg-macro/dbg.h) /usr/include/dbg.h
