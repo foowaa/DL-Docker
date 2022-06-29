@@ -6,15 +6,6 @@ RUN apt-key del 7fa2af80 \
 COPY cuda-keyring_1.0-1_all.deb .
 RUN dpkg -i cuda-keyring_1.0-1_all.deb
 
-
-RUN apt update
-RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
-    libxrender-dev libxext6 checkinstall pkg-config yasm gfortran libavcodec-dev libavfilter-dev libavformat-dev libavutil-dev rsync libncurses5-dev\
-    # Clean up
-    && apt-get autoremove -y \
-    && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /me
 RUN wget https://github.com/jonas/tig/releases/download/tig-2.5.4/tig-2.5.4.tar.gz
 RUN tar xzvf tig-2.5.4.tar.gz
@@ -30,7 +21,6 @@ RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image sci
     download decord av torchnet tabulate torchdata torchaudio torchtext torchmetrics darts opencv-contrib-python \
     pycocotools ujson tensorwatch
 # RUN pip install deep-forest cupy-cuda102 paddlepaddle-gpu paddlevideo cityscapesscripts pycuda 
-RUN pip install nbnb
 
 WORKDIR /me
 # install oh-my-zsh
