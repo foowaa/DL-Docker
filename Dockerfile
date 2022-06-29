@@ -9,7 +9,7 @@ RUN dpkg -i cuda-keyring_1.0-1_all.deb
 
 RUN apt update
 RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
-    libxrender-dev libxext6 checkinstall pkg-config yasm gfortran libavcodec-dev libavfilter-dev libavformat-dev libavutil-dev rsync \
+    libxrender-dev libxext6 checkinstall pkg-config yasm gfortran libavcodec-dev libavfilter-dev libavformat-dev libavutil-dev rsync libncurses5-dev\
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
@@ -33,8 +33,14 @@ RUN cd global-6.6.2 && ./configure --disable-gtagscscope && make && make install
 RUN cd /me && rm -f global-6.6.2.tar.gz && rm -rf global-6.6.2
 # install exa
 RUN mkdir exa && cd exa && wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip \
-    && unzip exa-linux-x86_64-musl-v0.10.1.zip && cp bin/exa /usr/sbin/exa && chmod +x /usr/sbin/exa
+    && unzip exa-linux-x86_64-musl-v0.10.1.zip && cp bin/exa /usr/sbin/exa && chmod +x /usr/sbin/exa \
+    && echo 'alias lla="exa -la"' >> ~/.zshrc
 RUN rm -rf /me/exa
+# install tig
+RUN wget https://github.com/jonas/tig/releases/download/tig-2.5.4/tig-2.5.4.tar.gz && tar xzvf tig-2.5.4.tar.gz \
+    && cd tig-2.5.4 && ./configure && make && make install && rm -rf tig-2.5.4 \
+    && echo 'alias glog="tig"' >> ~/.zshrc && echo 'alias gstatus="tig status"' >> ~/.zshrc && source ~/.zshsrc
+
 
 #install denseflow
 # WORKDIR ~
