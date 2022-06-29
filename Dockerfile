@@ -19,12 +19,12 @@ RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag gi
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* 
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
-    tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pycuda pydub moviepy natsort pudb pytz sympy \
-    PySnooper loguru merry tenacity environs pypinyin attrs cattrs lmdb sh dill h5py networkx[default] librosa cupy-cuda102 \
+    tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
+    PySnooper loguru merry tenacity environs pypinyin attrs cattrs lmdb sh dill h5py networkx[default] librosa \
     pytorchvideo msgpack pyarrow thefuzz onnxruntime onnxruntime-gpu kornia Augmentor tormentor lightning-flash lightning-transformers lightning-bolts \
-    download decord av paddlepaddle-gpu paddlevideo torchnet tabulate torchdata torchaudio torchtext torchmetrics darts deep-forest opencv-contrib-python \
-    pycocotools cityscapesscripts ujson coremltools
-
+    download decord av torchnet tabulate torchdata torchaudio torchtext torchmetrics darts opencv-contrib-python \
+    pycocotools ujson coremltools
+# RUN pip install deep-forest cupy-cuda102 paddlepaddle-gpu paddlevideo cityscapesscripts pycuda 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 # install global
