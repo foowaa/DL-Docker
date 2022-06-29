@@ -17,11 +17,10 @@ RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag gi
     
 RUN wget https://github.com/jonas/tig/releases/download/tig-2.5.4/tig-2.5.4.tar.gz
 RUN tar xzvf tig-2.5.4.tar.gz
-RUN cd tig-2.5.4
-RUN make
-RUN make install
+RUN cd tig-2.5.4 && make
+RUN cd tig-2.5.4 && make install
 RUN rm -rf tig-2.5.4
-RUN echo 'alias glog="tig"' >> ~/.zshrc && echo 'alias gstatus="tig status"' >> ~/.zshrc && source ~/.zshsrc
+#RUN echo 'alias glog="tig"' >> ~/.zshrc && echo 'alias gstatus="tig status"' >> ~/.zshrc && source ~/.zshsrc
 
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
