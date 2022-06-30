@@ -8,7 +8,8 @@ RUN dpkg -i cuda-keyring_1.0-1_all.deb
 
 RUN apt update
 RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag git zsh curl zip unzip jq libturbojpeg  ninja-build libglib2.0-0 libsm6 \ 
-    libxrender-dev libxext6 checkinstall pkg-config yasm gfortran libavcodec-dev libavfilter-dev libavformat-dev libavutil-dev rsync libncurses5-dev\
+    libxrender-dev libxext6 checkinstall pkg-config yasm gfortran libavcodec-dev libavfilter-dev libavformat-dev libavutil-dev rsync libncurses5-dev \
+    graphviz graphviz-doc \
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
@@ -18,8 +19,8 @@ RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image sci
     tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
     PySnooper loguru merry tenacity environs pypinyin attrs cattrs lmdb sh dill h5py networkx[default] librosa \
     pytorchvideo msgpack pyarrow thefuzz onnxruntime onnxruntime-gpu kornia Augmentor tormentor lightning-flash lightning-transformers lightning-bolts \
-    download decord av torchnet tabulate torchdata torchaudio torchtext torchmetrics darts opencv-contrib-python \
-    pycocotools ujson tensorwatch
+    decord av tabulate torchdata torchaudio torchtext torchmetrics darts opencv-contrib-python \
+    pycocotools flashtorch torchviz
 # RUN pip install deep-forest cupy-cuda102 paddlepaddle-gpu paddlevideo cityscapesscripts pycuda 
 
 WORKDIR /me
@@ -32,7 +33,9 @@ RUN cd /me && rm -f global-6.6.2.tar.gz && rm -rf global-6.6.2
 # install exa
 RUN mkdir exa && cd exa && wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-musl-v0.10.1.zip \
     && unzip exa-linux-x86_64-musl-v0.10.1.zip && cp bin/exa /usr/sbin/exa && chmod +x /usr/sbin/exa \
-    && echo 'alias lla="exa -la"' >> ~/.zshrc
+    && echo 'alias lla="exa -la"' >> ~/.zshrc \
+    && echo 'alias mm="micro"' >> ~/.zshrc \
+    && echo 'alias py="ipython"' >> ~/.zshrc
 RUN rm -rf /me/exa
 
 #install denseflow
