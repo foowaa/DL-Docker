@@ -16,10 +16,10 @@ RUN apt install -y build-essential neovim ffmpeg cmake wget silversearcher-ag gi
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install matplotlib sklearn opencv-python imageio Pillow scikit-image scipy graphviz easydict pytorch-lightning ipython torchinfo click \
-    tensorboardX jieba pandas statsmodels lightgbm arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
+    tensorboardX jieba pandas statsmodels xgboost arrow einops fvcore pyyaml seaborn onnx tensorrt pydub moviepy natsort pudb pytz sympy \
     PySnooper loguru merry tenacity environs pypinyin attrs cattrs lmdb sh dill h5py networkx[default] librosa \
     pytorchvideo msgpack pyarrow thefuzz onnxruntime onnxruntime-gpu kornia Augmentor tormentor lightning-flash lightning-transformers lightning-bolts \
-    decord av tabulate torchdata torchaudio torchtext torchmetrics darts opencv-contrib-python \
+    decord av tabulate torchdata torchaudio torchtext torchmetrics darts opencv-contrib-python libsvm-official \
     pycocotools flashtorch torchviz
 # RUN pip install deep-forest cupy-cuda102 paddlepaddle-gpu paddlevideo cityscapesscripts pycuda 
 
